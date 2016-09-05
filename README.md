@@ -28,20 +28,33 @@ RelativeLayout rootView = (RelativeLayout) findViewById(R.id.rootView);
 ```
 Next you need to create an instance of the DropDownWarning, there are a few constructors.
 
-
+Minimum:
 ```
-DropDownWarning dropDownWarning = new DropDownWarning(context, "Message", 0xffff8154, rootView,100, 0xff1122ff, new BounceInterpolator(), new AnticipateInterpolator());
+DropDownWarning dropDownWarning = new DropDownWarning(Context context, String text, int backgroundColor, ViewGroup parent)
+```
+
+Maximum:
+```
+DropDownWarning dropDownWarning = new DropDownWarning(Context context, String text, int backgroundColor, ViewGroup rootView, int height, int textColor, Interpolator inInterpolator, Interpolator outInterpolator);
 ```
 Paramters:
 ```
 context = the context of the activity
-"Message" = message to display
-0xffff8154 = background color in argb (rgb with alpha)
+
+text = message to display
+
+backgroundColor = background color in argb (rgb with alpha)
+
 rootView = parent view
-100 = height of the notification (in dp)
-0xff1122ff = text color in argb
-new BounceInterpolator() = interpolator for the "show" animation
-new AnticipateInterpolator() = interpolator for the "hide" animation
+
+height = height of the notification (in dp)
+
+textColor = text color in argb
+
+inInterpolator = interpolator for the "show" animation
+
+outInterpolator = interpolator for the "hide" animation
+
 ```
 
 
