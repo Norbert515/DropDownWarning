@@ -3,13 +3,14 @@ Easy to implemente a drop down warning/ message
 
 # Installation
 
-Download the .aar file : [aar file](dropdownwarninglibrary-release.aar)
-[aar2](https://github.com/Brudigem/DropDownWarning/raw/master/dropdownwarninglibrary-release.aar)
+[Download the .aar file](https://github.com/Brudigem/DropDownWarning/raw/master/dropdownwarninglibrary-release.aar)
 
+Go to *File* -> *New* -> *New Module* -> *Import .Jar/.AAR Package*
 
+Add this to your dependecies
 ```
-dependecys{
-complile BLA
+dependecies{
+    complile project (":dropdownwarninglibrary-release")
 }
 
 ```
