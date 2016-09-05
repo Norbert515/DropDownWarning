@@ -1,6 +1,7 @@
 package com.nks.dropdownwarninglibrary;
 
 import android.content.Context;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -58,7 +59,8 @@ public class DropDownWarning extends LinearLayout {
         this.parent = parent;
         this.warningMessage = text;
         this.backgroundColor = backgroundColor;
-        this.height = textHeight;
+        this.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,textHeight, context.getResources().getDisplayMetrics());
+
         this.foregroundColor = 0xf00fffff;
 
         addWarningView();
@@ -81,7 +83,7 @@ public class DropDownWarning extends LinearLayout {
         this.parent = parent;
         this.warningMessage = text;
         this.backgroundColor = backgroundColor;
-        this.height = textHeight;
+        this.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,textHeight, context.getResources().getDisplayMetrics());
         this.foregroundColor = textColor;
 
         addWarningView();
@@ -106,7 +108,7 @@ public class DropDownWarning extends LinearLayout {
         this.parent = parent;
         this.warningMessage = text;
         this.backgroundColor = backgroundColor;
-        this.height = textHeight;
+        this.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,textHeight, context.getResources().getDisplayMetrics());
         this.foregroundColor = textColor;
         this.interpolatorIn = interpolatorIn;
         this.interpolatorOut = interpolatorOut;

@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
         rootView = (RelativeLayout) findViewById(R.id.rootView);
 
         Button button = (Button) findViewById(R.id.button);
-        
-        dropDownWarning = new DropDownWarning(getApplicationContext(),"My message",0xff49baff,rootView,200,0xffffffff,new BounceInterpolator(),new AnticipateOvershootInterpolator());
+
+        dropDownWarning = new DropDownWarning(getApplicationContext(),"My message",0xff49baff,rootView,60,0xffffffff);
 
         assert button != null;
         button.setOnClickListener(new View.OnClickListener() {
