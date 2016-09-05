@@ -57,6 +57,15 @@ outInterpolator = interpolator for the "hide" animation
 
 ```
 
+To display the warning you need to call:
+```
+dropDownWarning.showWarning()
+```
+and to hide it:
+```
+dropDownWarning.hideWarning()
+```
+
 #License
 ```
 MIT License
