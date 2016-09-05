@@ -4,6 +4,8 @@ Easy to implemente a drop down warning/ message
 # Installation
 
 Download the .aar file : [aar file](dropdownwarninglibrary-release.aar)
+[aar2](https://github.com/Brudigem/DropDownWarning/raw/master/dropdownwarninglibrary-release.aar)
+
 
 ```
 dependecys{
