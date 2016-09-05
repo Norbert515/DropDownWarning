@@ -23,6 +23,7 @@ public class DropDownWarning extends LinearLayout {
     private int height;
     private Interpolator interpolatorIn, interpolatorOut;
     private int animationLength;
+    boolean isVisible = false;
 
     /**
      *
@@ -157,8 +158,11 @@ public class DropDownWarning extends LinearLayout {
      * Starts fade in animation and shows text view
      */
     public void showWarning(){
-        textView.setVisibility(VISIBLE);
-        textView.startAnimation(fadeIn);
+        if(!isVisible) {
+            textView.setVisibility(VISIBLE);
+            textView.startAnimation(fadeIn);
+            isVisible = true;
+        }
 
     }
 
@@ -167,6 +171,7 @@ public class DropDownWarning extends LinearLayout {
      * Starts fade out animation and hides text view
      */
     public void hideWarning(){
+        if(!isVisible)return;
         fadeOut.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -182,6 +187,7 @@ public class DropDownWarning extends LinearLayout {
 
             }
         });
+        isVisible = false;
         textView.startAnimation(fadeOut);
 
 
