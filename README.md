@@ -1,6 +1,6 @@
 # DropDownWarning
 Drop down message
 
-![bounce](gif/bounce.gif = 100x20)
+![bounce](gif/bounce.gif)
 
-<gif src="gif/bounce.gif" width="200">
+<img src="gif/bounce.gif" width="200">
