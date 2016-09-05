@@ -1,4 +1,4 @@
 # DropDownWarning
 Drop down message
 
-![alt tag](gif/bounce.gif)
+![alt tag](gif/bounce.gif | width = 100)
