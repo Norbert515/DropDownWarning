@@ -191,8 +191,9 @@ public class DropDownWarning extends LinearLayout {
         return warningMessage;
     }
 
-    public void getWarningMessage(String text) {
+    public void setWarningMessage(String text) {
         this.warningMessage = text;
+        textView.setText(warningMessage);
     }
 
     public int getMessageBackgroundColor() {
@@ -201,6 +202,7 @@ public class DropDownWarning extends LinearLayout {
 
     public void setMessageBackgroundColor(int backgroundColor) {
         this.backgroundColor = backgroundColor;
+        textView.setBackgroundColor(backgroundColor);
     }
 
     public int getForegroundColor() {
@@ -209,6 +211,7 @@ public class DropDownWarning extends LinearLayout {
 
     public void setForegroundColor(int foregroundColor) {
         this.foregroundColor = foregroundColor;
+        textView.setTextColor(foregroundColor);
     }
 
     public int getWarningHeight() {
@@ -217,6 +220,8 @@ public class DropDownWarning extends LinearLayout {
 
     public void setWarningHeight(int height) {
         this.height = height;
+        LayoutParams l = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
+        textView.setLayoutParams(l);
     }
 
     public Interpolator getInterpolatorIn() {
@@ -225,6 +230,7 @@ public class DropDownWarning extends LinearLayout {
 
     public void setInterpolatorIn(Interpolator interpolatorIn) {
         this.interpolatorIn = interpolatorIn;
+        fadeIn.setInterpolator(interpolatorIn);
     }
 
     public Interpolator getInterpolatorOut() {
@@ -233,6 +239,7 @@ public class DropDownWarning extends LinearLayout {
 
     public void setInterpolatorOut(Interpolator interpolatorOut) {
         this.interpolatorOut = interpolatorOut;
+        fadeOut.setInterpolator(interpolatorOut);
     }
 
     public int getAnimationLength() {
