@@ -31,13 +31,21 @@ Next you need to create a DropDownWarning.Builder
 ##Builder
 ```
 DropDownWarning dropDownWarning = DropDownWarning.Builder(Context context, ViewGroup parent)
+
     .interpolatorIn(Interpolator interpolator) //Intepolator used for the "show" animation
+    
     .interpolatorOut(Interpolator interpolator) //Interpolator used for the "hide" animation
+    
     .animationLength(int length) //Lenght of the animation in ms
+    
     .textHeight(int height) //Height of the text view
+    
     .message(String message) //Message to display
+    
     .foregroundColor(int color) //Color of the text in argb
+    
     .backgroundColor(int color) //Color of the background in argb
+    
     .build() //return DropDownWarning
 ```
 
