@@ -3,6 +3,7 @@ package com.nks.dropdownwarning;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AnticipateInterpolator;
 import android.view.animation.AnticipateOvershootInterpolator;
 import android.view.animation.BounceInterpolator;
 import android.widget.Button;
@@ -28,18 +29,18 @@ public class MainActivity extends AppCompatActivity {
 
         Button button = (Button) findViewById(R.id.button);
 
-        dropDownWarning = new DropDownWarning(getApplicationContext(),"My message",0xff49baff,rootView,60,0xffffffff);
 
+        dropDownWarning = new DropDownWarning.Builder(getApplicationContext(),rootView).message("My Message").backgroundColor(0xff1976D2).foregroundColor(0xffffffff).intepolatorIn(new BounceInterpolator()).intepolatorOut(new AnticipateOvershootInterpolator()).textHeight(80).build();
         assert button != null;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(on){
-                    dropDownWarning.hideWarning();
+                    dropDownWarning.hide();
                     on = false;
 
                 }else{
-                    dropDownWarning.showWarning();
+                    dropDownWarning.show();
                     on = true;
                 }
 

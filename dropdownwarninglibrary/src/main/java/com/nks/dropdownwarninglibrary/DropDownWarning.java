@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,101 +26,90 @@ public class DropDownWarning extends LinearLayout {
     private int animationLength;
     boolean isVisible = false;
 
-    /**
-     *
-     * @param context
-     * @param text Text to display
-     * @param backgroundColor hex color value with alpha (example "0xff49f522")
-     * @param parent
-     */
-    public DropDownWarning(Context context, String text, int backgroundColor, ViewGroup parent) {
-        super(context);
-        this.parent = parent;
-        this.warningMessage = text;
-        this.backgroundColor = backgroundColor;
-        this.foregroundColor = 0xffffffff;
 
-        height = 120;
+
+    public static class Builder{
+        private Interpolator interpolatorIn, interpolatorOut;
+        private int animationLength;
+        private int height;
+        private String warningMessage;
+        private Context context;
+        private ViewGroup parent;
+        private int backgroundColor, foregroundColor;
+
+
+        public Builder(Context context, ViewGroup parent){
+            this.context = context;
+            this.parent = parent;
+            warningMessage = "My Message";
+            height = 60;
+            animationLength = 500;
+            interpolatorIn = new LinearInterpolator();
+            interpolatorOut = new LinearInterpolator();
+            backgroundColor = 0xffffffff;
+            foregroundColor = 0xff000000;
+        }
+
+
+        public Builder intepolatorIn(Interpolator interpolator){
+            this.interpolatorIn = interpolator;
+            return this;
+        }
+
+        public Builder intepolatorOut(Interpolator interpolator){
+            this.interpolatorOut = interpolator;
+            return this;
+        }
+
+        public Builder animationLength(int length){
+            this.animationLength = length;
+            return this;
+        }
+
+        public Builder textHeight(int height){
+            this.height = height;
+            return this;
+        }
+
+        public Builder message(String message){
+            this.warningMessage = message;
+            return this;
+        }
+
+        public Builder foregroundColor(int color){
+            this.foregroundColor = color;
+            return this;
+        }
+
+        public Builder backgroundColor(int color){
+            this.backgroundColor = color;
+            return this;
+        }
+
+        public DropDownWarning build(){
+            return new DropDownWarning(this);
+        }
+
+    }
+
+    public DropDownWarning(Builder builder){
+        super(builder.context);
+
+        warningMessage = builder.warningMessage;
+        backgroundColor = builder.backgroundColor;
+        foregroundColor = builder.foregroundColor;
+        height = builder.height;
+        interpolatorIn = builder.interpolatorIn;
+        interpolatorOut = builder.interpolatorOut;
+        animationLength = builder.animationLength;
+        parent = builder.parent;
+
 
         addWarningView();
         setUpLayoutParams();
         initializeAnimation();
-
     }
 
-    /**
-     *
-     * @param context
-     * @param text Text to display
-     * @param backgroundColor Color of the background in hex with alpha
-     * @param parent
-     * @param textHeight Height of the warning
-     */
-    public DropDownWarning(Context context, String text, int backgroundColor, ViewGroup parent, int textHeight){
-        super(context);
-        this.parent = parent;
-        this.warningMessage = text;
-        this.backgroundColor = backgroundColor;
-        this.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,textHeight, context.getResources().getDisplayMetrics());
-
-        this.foregroundColor = 0xf00fffff;
-
-        addWarningView();
-        setUpLayoutParams();
-        initializeAnimation();
-
-    }
-
-    /**
-     *
-     * @param context
-     * @param text Text to display
-     * @param backgroundColor Color of the background in hex with alpha
-     * @param parent
-     * @param textHeight Height of the warning
-     * @param textColor Color of the text in hex with alpha
-     */
-    public DropDownWarning(Context context, String text, int backgroundColor, ViewGroup parent, int textHeight, int textColor){
-        super(context);
-        this.parent = parent;
-        this.warningMessage = text;
-        this.backgroundColor = backgroundColor;
-        this.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,textHeight, context.getResources().getDisplayMetrics());
-        this.foregroundColor = textColor;
-
-        addWarningView();
-        setUpLayoutParams();
-        initializeAnimation();
-
-    }
-
-    /**
-     *
-     * @param context
-     * @param text Text to display
-     * @param backgroundColor Color of the background in hex with alpha
-     * @param parent
-     * @param textHeight Height of the warning
-     * @param textColor Color of the text in hex with alpha
-     * @param interpolatorIn Interpolation of the animation IN
-     * @param interpolatorOut Interpolation of the animation OUT
-     */
-    public DropDownWarning(Context context, String text, int backgroundColor, ViewGroup parent, int textHeight, int textColor, Interpolator interpolatorIn, Interpolator interpolatorOut){
-        super(context);
-        this.parent = parent;
-        this.warningMessage = text;
-        this.backgroundColor = backgroundColor;
-        this.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,textHeight, context.getResources().getDisplayMetrics());
-        this.foregroundColor = textColor;
-        this.interpolatorIn = interpolatorIn;
-        this.interpolatorOut = interpolatorOut;
-
-        addWarningView();
-        setUpLayoutParams();
-        initializeAnimation();
-
-
-    }
 
     private void addWarningView(){
         textView = new TextView(getContext());
@@ -157,7 +147,7 @@ public class DropDownWarning extends LinearLayout {
     /**
      * Starts fade in animation and shows text view
      */
-    public void showWarning(){
+    public void show(){
         if(!isVisible) {
             textView.setVisibility(VISIBLE);
             textView.startAnimation(fadeIn);
@@ -170,7 +160,7 @@ public class DropDownWarning extends LinearLayout {
     /**
      * Starts fade out animation and hides text view
      */
-    public void hideWarning(){
+    public void hide(){
         if(!isVisible)return;
         fadeOut.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -193,68 +183,4 @@ public class DropDownWarning extends LinearLayout {
 
     }
 
-    public String getWarningMessage() {
-        return warningMessage;
-    }
-
-    public void setWarningMessage(String text) {
-        this.warningMessage = text;
-        textView.setText(warningMessage);
-    }
-
-    public int getMessageBackgroundColor() {
-        return backgroundColor;
-    }
-
-    public void setMessageBackgroundColor(int backgroundColor) {
-        this.backgroundColor = backgroundColor;
-        textView.setBackgroundColor(backgroundColor);
-    }
-
-    public int getForegroundColor() {
-        return foregroundColor;
-    }
-
-    public void setForegroundColor(int foregroundColor) {
-        this.foregroundColor = foregroundColor;
-        textView.setTextColor(foregroundColor);
-    }
-
-    public int getWarningHeight() {
-        return height;
-    }
-
-    public void setWarningHeight(int height) {
-        this.height = height;
-        LayoutParams l = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
-        textView.setLayoutParams(l);
-    }
-
-    public Interpolator getInterpolatorIn() {
-        return interpolatorIn;
-    }
-
-    public void setInterpolatorIn(Interpolator interpolatorIn) {
-        this.interpolatorIn = interpolatorIn;
-        fadeIn.setInterpolator(interpolatorIn);
-    }
-
-    public Interpolator getInterpolatorOut() {
-        return interpolatorOut;
-    }
-
-    public void setInterpolatorOut(Interpolator interpolatorOut) {
-        this.interpolatorOut = interpolatorOut;
-        fadeOut.setInterpolator(interpolatorOut);
-    }
-
-    public int getAnimationLength() {
-        return animationLength;
-    }
-
-    public void setAnimationLength(int animationLength) {
-        this.animationLength = animationLength;
-        fadeIn.setDuration(animationLength);
-        fadeOut.setDuration(animationLength);
-    }
 }
