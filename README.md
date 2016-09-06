@@ -30,7 +30,7 @@ Next you need to create a DropDownWarning.Builder
 
 ###Builder
 ```
-DropDownWarning dropDownWarning = DropDownWarning.Builder(Context context, ViewGroup parent)
+DropDownWarning dropDownWarning = new DropDownWarning.Builder(Context context, ViewGroup parent)
 
     .interpolatorIn(Interpolator interpolator) //Intepolator used for the "show" animation
     
