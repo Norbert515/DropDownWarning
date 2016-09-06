@@ -26,44 +26,29 @@ First you need the top level Layout (most of the times it's a relative layout), 
 ```
 RelativeLayout rootView = (RelativeLayout) findViewById(R.id.rootView);
 ```
-Next you need to create an instance of the DropDownWarning, there are a few constructors.
+Next you need to create a DropDownWarning.Builder
 
-##Minimum:
+##Builder
 ```
-DropDownWarning dropDownWarning = new DropDownWarning(Context context, String text, int backgroundColor, ViewGroup parent)
+DropDownWarning dropDownWarning = DropDownWarning.Builder(Context context, ViewGroup parent)
+    .interpolatorIn(Interpolator interpolator) //Intepolator used for the "show" animation
+    .interpolatorOut(Interpolator interpolator) //Interpolator used for the "hide" animation
+    .animationLength(int length) //Lenght of the animation in ms
+    .textHeight(int height) //Height of the text view
+    .message(String message) //Message to display
+    .foregroundColor(int color) //Color of the text in argb
+    .backgroundColor(int color) //Color of the background in argb
+    .build() //return DropDownWarning
 ```
 
-##Maximum:
-```
-DropDownWarning dropDownWarning = new DropDownWarning(Context context, String text, int backgroundColor, ViewGroup rootView, int height, int textColor, Interpolator inInterpolator, Interpolator outInterpolator);
-```
-##Paramters:
-```
-context = the context of the activity
-
-text = message to display
-
-backgroundColor = background color in argb (rgb with alpha)
-
-rootView = parent view
-
-height = height of the notification (in dp)
-
-textColor = text color in argb
-
-inInterpolator = interpolator for the "show" animation
-
-outInterpolator = interpolator for the "hide" animation
-
-```
 
 To display the warning you need to call:
 ```
-dropDownWarning.showWarning()
+dropDownWarning.show()
 ```
 and to hide it:
 ```
-dropDownWarning.hideWarning()
+dropDownWarning.hide()
 ```
 
 #License
