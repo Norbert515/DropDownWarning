@@ -51,12 +51,12 @@ public class DropDownWarning extends LinearLayout {
         }
 
 
-        public Builder intepolatorIn(Interpolator interpolator){
+        public Builder interpolatorIn(Interpolator interpolator){
             this.interpolatorIn = interpolator;
             return this;
         }
 
-        public Builder intepolatorOut(Interpolator interpolator){
+        public Builder interpolatorOut(Interpolator interpolator){
             this.interpolatorOut = interpolator;
             return this;
         }
