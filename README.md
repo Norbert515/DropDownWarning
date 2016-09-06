@@ -28,7 +28,7 @@ RelativeLayout rootView = (RelativeLayout) findViewById(R.id.rootView);
 ```
 Next you need to create a DropDownWarning.Builder
 
-##Builder
+###Builder
 ```
 DropDownWarning dropDownWarning = DropDownWarning.Builder(Context context, ViewGroup parent)
 
