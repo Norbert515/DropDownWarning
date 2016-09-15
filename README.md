@@ -13,7 +13,7 @@ Go to *File* -> *New* -> *New Module* -> *Import .Jar/.AAR Package*
 Add this to your dependecies
 ```
 dependecies{
-    complile project (":dropdownwarninglibrary-release")
+    compile project (":dropdownwarninglibrary-release")
 }
 
 ```
