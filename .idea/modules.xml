@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DropDownWarning.iml" filepath="$PROJECT_DIR$/DropDownWarning.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DropDownWarning.iml" filepath="$PROJECT_DIR$/DropDownWarning.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dropdownwarninglibrary/dropdownwarninglibrary.iml" filepath="$PROJECT_DIR$/dropdownwarninglibrary/dropdownwarninglibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/dropdownwarninglibrary/dropdownwarninglibrary.iml" filepath="$PROJECT_DIR$/dropdownwarninglibrary/dropdownwarninglibrary.iml" />
     </modules>
   </component>

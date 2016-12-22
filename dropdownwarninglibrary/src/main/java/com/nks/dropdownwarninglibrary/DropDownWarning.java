@@ -157,6 +157,12 @@ public class DropDownWarning extends LinearLayout {
 
     }
 
+    @Override
+    public void setOnClickListener(OnClickListener listener){
+        textView.setOnClickListener(listener);
+    }
+
+
 
     /**
      * Starts fade out animation and hides text view

@@ -7,6 +7,7 @@ import android.view.animation.AnticipateOvershootInterpolator;
 import android.view.animation.BounceInterpolator;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.nks.dropdownwarninglibrary.DropDownWarning;
 
@@ -40,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
                 }else{
                     dropDownWarning.show();
+                    dropDownWarning.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(getApplicationContext(),"DropDownWarning pressed", Toast.LENGTH_LONG).show();
+                        }
+                    });
                     on = true;
                 }
 
