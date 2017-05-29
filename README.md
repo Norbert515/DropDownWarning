@@ -18,6 +18,22 @@ dependecies{
 
 ```
 
+Or simply include 
+```
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+in your project gradle and then:
+```
+dependencies {
+	        compile 'com.github.Norbert515:DropDownWarning:-SNAPSHOT'
+	}
+```
+
 # Code
 
 
